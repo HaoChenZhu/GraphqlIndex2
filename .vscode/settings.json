@@ -1,0 +1,6 @@
+{
+  "deno.enable": true,
+  "deno.unstable": true,
+  "git.ignoreLimitWarning": true
+  // "deno.importMap": "./import_map.json"
+}
