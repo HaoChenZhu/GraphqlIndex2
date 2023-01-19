@@ -5,10 +5,16 @@ import { typeDefs } from "./schema.ts";
 import { Mutation } from "./resolvers/mutation.ts";
 import { Query } from "./resolvers/query.ts";
 import "dotenv";
+import { Team } from "./resolvers/team.ts";
+import { Player } from "./resolvers/player.ts";
+import { Match } from "./resolvers/match.ts";
 
 const resolvers = {
   Mutation,
-  Query
+  Query,
+  Team,
+  Player,
+  Match
 };
 let port = Deno.env.get("PORT");
 let parsedPort = port ? parseInt(port, 10) : 7777;
@@ -25,7 +31,8 @@ const s = new Server({
         context: (ctx) => {
           return {
             request: ctx,
-            token: ctx.headers.get("token")
+            token: ctx.headers.get("token"),
+            register_key: ctx.headers.get("register_key")
           }
         }
       })(req)

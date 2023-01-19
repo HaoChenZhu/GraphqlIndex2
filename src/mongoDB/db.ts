@@ -1,5 +1,5 @@
 import { Database, MongoClient } from "mongo";
-import { UserSchema } from "./schema.ts";
+import { MatchSchema, PlayerSchema, TeamSchema, UserSchema } from "./schema.ts";
 import "dotenv";
 
 const connectMongoDB = async (): Promise<Database> => {
@@ -22,4 +22,7 @@ const connectMongoDB = async (): Promise<Database> => {
 const db = await connectMongoDB();
 console.info(`MomgoDb ${Deno.env.get("DB_NAME")} connected`);
 export const userCollection = db.collection<UserSchema>("user");
+export const teamCollection = db.collection<TeamSchema>("team");
+export const playerCollection = db.collection<PlayerSchema>("playes");
+export const matchCollection = db.collection<MatchSchema>("match");
 
